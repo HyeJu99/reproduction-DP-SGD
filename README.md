@@ -1,4 +1,7 @@
-# Differentially-Private-Deep-Learning
+# Reproduction of DP-SGD w/ pytorch
+The repo is a reproduction of DP-SGD w/ pytorch. (The original repo is [here](https://github.com/dayu11/Differentially-Private-Deep-Learning).)
+
+## Differentially-Private-Deep-Learning
 
 ## Update 11/18/2021
 
