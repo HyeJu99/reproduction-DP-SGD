@@ -163,6 +163,11 @@ def train(epoch):
         sample_idxes = np.arange(n_training)
         np.random.shuffle(sample_idxes)
 
+    # [DiSK] Initialize:
+    d_t_minus = 0
+    k = 0.7
+    y = -1
+
     for batch_idx in range(steps):
         if args.dataset == "svhn":
             current_batch_idxes = sample_idxes[
@@ -187,12 +192,24 @@ def train(epoch):
                 process_grad_batch(
                     list(net.parameters()), args.clip
                 )  # clip gradients and sum clipped gradients
-                ## add noise to gradient
+
+                ## Add noise to gradient
                 for p in net.parameters():
+                    g_t_minus = torch.zeros_like(p)
+                    # print("g_t_minus.shape", g_t_minus.shape)
+
                     shape = p.grad.shape
                     numel = p.grad.numel()
-                    # grad_noise = torch.normal(0, noise_multiplier*args.clip/args.batchsize, size=p.grad.shape, device=p.grad.device)
-                    # p.grad.data += grad_noise
+                    g_t = torch.normal(
+                        0,
+                        noise_multiplier * args.clip / args.batchsize,
+                        size=p.grad.shape,
+                        device=p.grad.device,
+                    )
+                    g_t_hat = (1 - k) * g_t_minus + k * g_t
+                    x_t = p.grad.data
+                    p.grad.data += g_t_hat
+                    d_t = p.grad.data - x_t
         else:
             optimizer.zero_grad()
             outputs = net(inputs)
