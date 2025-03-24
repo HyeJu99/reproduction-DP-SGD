@@ -167,6 +167,7 @@ def train(epoch):
     d_t_minus = 0
     k = 0.7
     y = -1
+    g_t_minuses = []
 
     for batch_idx in range(steps):
         if args.dataset == "svhn":
@@ -194,22 +195,31 @@ def train(epoch):
                 )  # clip gradients and sum clipped gradients
 
                 ## Add noise to gradient
-                for p in net.parameters():
-                    g_t_minus = torch.zeros_like(p)
-                    # print("g_t_minus.shape", g_t_minus.shape)
-
-                    shape = p.grad.shape
-                    numel = p.grad.numel()
-                    g_t = torch.normal(
+                # print("len(g_t_minus)", len(g_t_minus))  # 21
+                for idx, p in enumerate(net.parameters()):
+                    if batch_idx == 0:
+                        g_t_minus = torch.zeros_like(p)
+                    else:
+                        g_t_minus = g_t_minuses[idx]
+                    # print("b_idx:{}, idx:{}, p.shape:{}".format(batch_idx, idx, p.shape))
+                    g_t = torch.normal(  # TODO: 알고리즘3으로 변경 필요
                         0,
                         noise_multiplier * args.clip / args.batchsize,
                         size=p.grad.shape,
                         device=p.grad.device,
                     )
                     g_t_hat = (1 - k) * g_t_minus + k * g_t
+                    # if idx == 20:
+                    # print("===============")
+                    # print("idx:{} g_t_minus:{}".format(idx, g_t_minus))
                     x_t = p.grad.data
                     p.grad.data += g_t_hat
                     d_t = p.grad.data - x_t
+
+                    if batch_idx == 0:
+                        g_t_minuses.append(g_t_hat)
+                    else:
+                        g_t_minuses[idx] = g_t_hat
         else:
             optimizer.zero_grad()
             outputs = net(inputs)
