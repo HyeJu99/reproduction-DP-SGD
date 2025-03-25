@@ -165,8 +165,8 @@ def train(epoch):
 
     # [DiSK] Initialize:
     d_t_minuses = []  # [int] 업데이트방향(앞뒤 가중치 간 차이)
-    k = 0.7  # kappa
-    y = (1 - k) / k  # gamma NAG
+    k = 0.99  # kappa
+    y = -1  # gamma NAG
     g_t_minuses = []  # [Tensor]
 
     for batch_idx in range(steps):
@@ -198,32 +198,36 @@ def train(epoch):
                 # print("len(g_t_minus)", len(g_t_minus))  # 21
                 for idx, p in enumerate(net.parameters()):
                     if batch_idx == 0:
-                        g_t_minus = p  # torch.zeros_like(p)  # L2 TODO
-                        d_t_minus = 0  # L2
+                        g_t_minus = torch.zeros_like(p)  # TODO L2
+                        d_t_minus = torch.zeros_like(p)  # L2
                     else:
                         g_t_minus = g_t_minuses[idx]
                         d_t_minus = d_t_minuses[idx]
                     # compute
-                    g_t = torch.normal(  # TODO: 알고리즘3으로 변경 필요
+                    g_t = torch.normal(  # TODO
                         0,
                         noise_multiplier * args.clip / args.batchsize,
                         size=p.grad.shape,
                         device=p.grad.device,
                     )
-                    x_t = p.grad.data
-                    # combined_x_t = ((1 - k) / (k * y)) * (x_t + y * d_t_minus) + (
-                    # 1 - ((1 - k) / (k * y))
-                    # ) * x_t
-
                     # Apply filter
                     g_t_hat = (1 - k) * g_t_minus + k * g_t
+                    # print("g_t_hat:", g_t_hat)
+
+                    x_t = p.grad.data
+                    hyper_scalar = (1 - k) / (k * y)
+                    # print("hyper_scalar:", hyper_scalar)
+                    combined_x_t = (
+                        hyper_scalar * (x_t + y * d_t_minus) + (1 - hyper_scalar) * x_t
+                    )
 
                     # Parameter update
-                    # p.grad.data = combined_x_t + g_t_hat
-                    p.grad.data += g_t_hat
+                    # print("x_t - combined_x_t", x_t - combined_x_t)
+                    p.grad.data = combined_x_t + g_t_hat
+                    # p.grad.data += g_t_hat
 
                     # Record update direction
-                    d_t = p.grad.data  # -combined_x_t # TODO Q: 그럼 g_t_hat인거 아닌?
+                    d_t = p.grad.data - combined_x_t  # TODO Q: 그럼 g_t_hat인거 아닌?
                     if batch_idx == 0:
                         g_t_minuses.append(g_t_hat)
                         d_t_minuses.append(d_t)

@@ -1,4 +1,5 @@
 # k = 0.7 y = 1
+# g_t_minus = g_0
 
 ==> Preparing data..
 Files already downloaded and verified
