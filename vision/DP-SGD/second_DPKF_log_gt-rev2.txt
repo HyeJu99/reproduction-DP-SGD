@@ -1,0 +1,318 @@
+# k = 0.7 y = 1
+
+==> Preparing data..
+Files already downloaded and verified
+Files already downloaded and verified
+# of training examples:  50000 # of testing examples:  10000
+
+==> Computing noise scale for privacy budget (8.0, 0.000010)-DP
+noise scale:  1.2099999999999993 privacy guarantee:  7.956636368007988
+
+==> Creating ResNet20 model instance
+total number of parameters:  0.268346 M
+
+==> Strat training
+
+Epoch: 0
+/home/edgehyeju/miniforge3/envs/soteria39/lib/python3.9/site-packages/backpack/extensions/backprop_extension.py:107: UserWarning: Extension saving to grad_batch does not have an extension for Module <class 'models.resnet_cifar.ResNet'> although the module has parameters
+  warnings.warn(
+/home/edgehyeju/miniforge3/envs/soteria39/lib/python3.9/site-packages/backpack/extensions/backprop_extension.py:107: UserWarning: Extension saving to grad_batch does not have an extension for Module <class 'models.resnet_cifar.BasicBlock'> although the module has parameters
+  warnings.warn(
+Train loss:2.24367 time: 7 s train acc: 15.348 test loss:2.05512 test acc: 25.42
+
+Epoch: 1
+Train loss:1.99986 time: 6 s train acc: 25.182 test loss:1.87261 test acc: 31.67
+
+Epoch: 2
+Train loss:1.94706 time: 6 s train acc: 28.032 test loss:1.84501 test acc: 32.85
+
+Epoch: 3
+Train loss:1.94371 time: 6 s train acc: 28.622 test loss:1.90231 test acc: 30.61
+
+Epoch: 4
+Train loss:1.93480 time: 6 s train acc: 28.92 test loss:1.79361 test acc: 33.73
+
+Epoch: 5
+Train loss:1.93609 time: 6 s train acc: 27.834 test loss:1.83696 test acc: 30.69
+
+Epoch: 6
+Train loss:1.90619 time: 6 s train acc: 29.894 test loss:1.80294 test acc: 35.05
+
+Epoch: 7
+Train loss:1.87437 time: 6 s train acc: 30.726 test loss:1.75937 test acc: 35.48
+
+Epoch: 8
+Train loss:1.89534 time: 6 s train acc: 30.294 test loss:1.74047 test acc: 34.65
+
+Epoch: 9
+Train loss:1.89525 time: 6 s train acc: 30.038 test loss:1.79849 test acc: 32.46
+
+Epoch: 10
+Train loss:1.94638 time: 6 s train acc: 27.83 test loss:1.84360 test acc: 32.48
+
+Epoch: 11
+Train loss:1.85421 time: 6 s train acc: 31.658 test loss:1.79750 test acc: 34.86
+
+Epoch: 12
+Train loss:1.96018 time: 6 s train acc: 27.08 test loss:1.77427 test acc: 33.55
+
+Epoch: 13
+Train loss:1.89202 time: 6 s train acc: 30.11 test loss:1.85599 test acc: 33.17
+
+Epoch: 14
+Train loss:1.94772 time: 6 s train acc: 28.172 test loss:1.79391 test acc: 34.46
+
+Epoch: 15
+Train loss:1.89782 time: 6 s train acc: 29.666 test loss:1.90628 test acc: 31.28
+
+Epoch: 16
+Train loss:1.88593 time: 6 s train acc: 29.758 test loss:1.88072 test acc: 31.13
+
+Epoch: 17
+Train loss:1.91229 time: 6 s train acc: 28.838 test loss:1.76956 test acc: 34.81
+
+Epoch: 18
+Train loss:1.96388 time: 6 s train acc: 27.412 test loss:1.92272 test acc: 30.11
+
+Epoch: 19
+Train loss:1.88951 time: 6 s train acc: 29.746 test loss:1.77219 test acc: 34.91
+
+Epoch: 20
+Train loss:1.90277 time: 6 s train acc: 29.812 test loss:1.93506 test acc: 30.62
+
+Epoch: 21
+Train loss:1.90846 time: 6 s train acc: 28.67 test loss:1.78824 test acc: 34.26
+
+Epoch: 22
+Train loss:1.91060 time: 6 s train acc: 29.47 test loss:1.81372 test acc: 34.53
+
+Epoch: 23
+Train loss:1.89598 time: 6 s train acc: 29.478 test loss:1.78790 test acc: 32.76
+
+Epoch: 24
+Train loss:1.85632 time: 6 s train acc: 30.826 test loss:1.95584 test acc: 30.46
+
+Epoch: 25
+Train loss:1.87598 time: 6 s train acc: 30.968 test loss:1.89422 test acc: 32.96
+
+Epoch: 26
+Train loss:1.89400 time: 6 s train acc: 29.462 test loss:1.93848 test acc: 29.31
+
+Epoch: 27
+Train loss:1.89666 time: 6 s train acc: 29.712 test loss:1.82657 test acc: 30.89
+
+Epoch: 28
+Train loss:1.92139 time: 6 s train acc: 28.212 test loss:1.85087 test acc: 31.62
+
+Epoch: 29
+Train loss:1.89800 time: 6 s train acc: 29.834 test loss:1.93231 test acc: 30.68
+
+Epoch: 30
+Train loss:1.93352 time: 6 s train acc: 28.324 test loss:1.85979 test acc: 31.62
+
+Epoch: 31
+Train loss:1.88818 time: 6 s train acc: 29.75 test loss:1.81233 test acc: 32.88
+
+Epoch: 32
+Train loss:1.88391 time: 6 s train acc: 30.22 test loss:1.71415 test acc: 37.46
+
+Epoch: 33
+Train loss:1.90175 time: 6 s train acc: 30.362 test loss:1.73215 test acc: 35.87
+
+Epoch: 34
+Train loss:1.90153 time: 6 s train acc: 30.24 test loss:1.74599 test acc: 35.58
+
+Epoch: 35
+Train loss:1.94098 time: 6 s train acc: 28.202 test loss:1.81971 test acc: 32.73
+
+Epoch: 36
+Train loss:1.89821 time: 6 s train acc: 29.53 test loss:1.81912 test acc: 32.57
+
+Epoch: 37
+Train loss:1.89213 time: 6 s train acc: 30.366 test loss:1.88977 test acc: 33.5
+
+Epoch: 38
+Train loss:1.88381 time: 6 s train acc: 30.694 test loss:1.80417 test acc: 33.93
+
+Epoch: 39
+Train loss:1.88749 time: 6 s train acc: 29.934 test loss:1.80903 test acc: 34.45
+
+Epoch: 40
+Train loss:1.83680 time: 6 s train acc: 32.006 test loss:1.78295 test acc: 35.31
+
+Epoch: 41
+Train loss:1.90161 time: 6 s train acc: 31.186 test loss:1.71737 test acc: 35.58
+
+Epoch: 42
+Train loss:1.86316 time: 6 s train acc: 31.466 test loss:1.80243 test acc: 33.99
+
+Epoch: 43
+Train loss:1.84520 time: 6 s train acc: 32.01 test loss:1.77251 test acc: 34.51
+
+Epoch: 44
+Train loss:1.93274 time: 6 s train acc: 28.566 test loss:1.82500 test acc: 33.86
+
+Epoch: 45
+Train loss:1.93016 time: 6 s train acc: 28.44 test loss:1.75368 test acc: 35.07
+
+Epoch: 46
+Train loss:1.87511 time: 6 s train acc: 30.278 test loss:1.77355 test acc: 33.25
+
+Epoch: 47
+Train loss:1.99811 time: 6 s train acc: 26.64 test loss:1.87215 test acc: 31.4
+
+Epoch: 48
+Train loss:1.90919 time: 6 s train acc: 29.136 test loss:1.88119 test acc: 29.43
+
+Epoch: 49
+Train loss:1.91554 time: 6 s train acc: 29.202 test loss:1.87758 test acc: 30.88
+
+Epoch: 50
+Train loss:1.74927 time: 6 s train acc: 35.414 test loss:1.72179 test acc: 37.63
+
+Epoch: 51
+Train loss:1.70554 time: 6 s train acc: 37.43 test loss:1.69340 test acc: 38.42
+
+Epoch: 52
+Train loss:1.68411 time: 6 s train acc: 38.352 test loss:1.67915 test acc: 39.47
+
+Epoch: 53
+Train loss:1.67492 time: 6 s train acc: 39.272 test loss:1.66916 test acc: 40.34
+
+Epoch: 54
+Train loss:1.65565 time: 6 s train acc: 40.256 test loss:1.65736 test acc: 40.9
+
+Epoch: 55
+Train loss:1.64556 time: 6 s train acc: 40.906 test loss:1.65683 test acc: 41.23
+
+Epoch: 56
+Train loss:1.62837 time: 6 s train acc: 41.976 test loss:1.62317 test acc: 42.61
+
+Epoch: 57
+Train loss:1.61924 time: 6 s train acc: 42.296 test loss:1.60124 test acc: 43.06
+
+Epoch: 58
+Train loss:1.60536 time: 6 s train acc: 43.348 test loss:1.62043 test acc: 43.57
+
+Epoch: 59
+Train loss:1.60271 time: 6 s train acc: 43.57 test loss:1.59180 test acc: 44.0
+
+Epoch: 60
+Train loss:1.58720 time: 6 s train acc: 44.086 test loss:1.59388 test acc: 44.08
+
+Epoch: 61
+Train loss:1.58115 time: 6 s train acc: 44.318 test loss:1.63432 test acc: 43.06
+
+Epoch: 62
+Train loss:1.58435 time: 6 s train acc: 44.5 test loss:1.58382 test acc: 44.64
+
+Epoch: 63
+Train loss:1.57670 time: 6 s train acc: 44.916 test loss:1.59320 test acc: 44.74
+
+Epoch: 64
+Train loss:1.57151 time: 6 s train acc: 45.018 test loss:1.57306 test acc: 45.45
+
+Epoch: 65
+Train loss:1.56190 time: 7 s train acc: 45.494 test loss:1.59230 test acc: 45.21
+
+Epoch: 66
+Train loss:1.56687 time: 6 s train acc: 45.226 test loss:1.56020 test acc: 45.68
+
+Epoch: 67
+Train loss:1.55128 time: 6 s train acc: 45.892 test loss:1.57473 test acc: 45.33
+
+Epoch: 68
+Train loss:1.56731 time: 6 s train acc: 45.584 test loss:1.56983 test acc: 44.72
+
+Epoch: 69
+Train loss:1.55559 time: 7 s train acc: 45.946 test loss:1.54907 test acc: 46.57
+
+Epoch: 70
+Train loss:1.56450 time: 6 s train acc: 46.088 test loss:1.61714 test acc: 45.89
+
+Epoch: 71
+Train loss:1.54941 time: 6 s train acc: 46.52 test loss:1.55943 test acc: 46.39
+
+Epoch: 72
+Train loss:1.57902 time: 6 s train acc: 45.712 test loss:1.60042 test acc: 44.74
+
+Epoch: 73
+Train loss:1.55276 time: 6 s train acc: 46.322 test loss:1.62645 test acc: 44.78
+
+Epoch: 74
+Train loss:1.55983 time: 6 s train acc: 46.268 test loss:1.71195 test acc: 42.7
+
+Epoch: 75
+Train loss:1.51120 time: 6 s train acc: 47.86 test loss:1.51336 test acc: 48.36
+
+Epoch: 76
+Train loss:1.49223 time: 6 s train acc: 48.684 test loss:1.53292 test acc: 48.0
+
+Epoch: 77
+Train loss:1.49367 time: 6 s train acc: 48.972 test loss:1.52177 test acc: 48.52
+
+Epoch: 78
+Train loss:1.49628 time: 6 s train acc: 48.93 test loss:1.53913 test acc: 48.27
+
+Epoch: 79
+Train loss:1.50003 time: 6 s train acc: 49.034 test loss:1.53920 test acc: 48.45
+
+Epoch: 80
+Train loss:1.50411 time: 6 s train acc: 49.18 test loss:1.53637 test acc: 48.39
+
+Epoch: 81
+Train loss:1.50337 time: 6 s train acc: 49.172 test loss:1.53750 test acc: 48.61
+
+Epoch: 82
+Train loss:1.50679 time: 6 s train acc: 49.226 test loss:1.54339 test acc: 48.9
+
+Epoch: 83
+Train loss:1.50270 time: 6 s train acc: 49.352 test loss:1.54321 test acc: 48.64
+
+Epoch: 84
+Train loss:1.50153 time: 6 s train acc: 49.41 test loss:1.52827 test acc: 48.63
+
+Epoch: 85
+Train loss:1.50642 time: 6 s train acc: 49.444 test loss:1.54518 test acc: 48.67
+
+Epoch: 86
+Train loss:1.51003 time: 6 s train acc: 49.54 test loss:1.53246 test acc: 48.6
+
+Epoch: 87
+Train loss:1.50709 time: 6 s train acc: 49.53 test loss:1.54414 test acc: 48.41
+
+Epoch: 88
+Train loss:1.50890 time: 7 s train acc: 49.634 test loss:1.54134 test acc: 48.67
+
+Epoch: 89
+Train loss:1.50721 time: 7 s train acc: 49.708 test loss:1.54598 test acc: 49.04
+
+Epoch: 90
+Train loss:1.51407 time: 6 s train acc: 49.664 test loss:1.57980 test acc: 48.42
+
+Epoch: 91
+Train loss:1.51471 time: 6 s train acc: 49.846 test loss:1.56467 test acc: 48.64
+
+Epoch: 92
+Train loss:1.51571 time: 6 s train acc: 49.778 test loss:1.56663 test acc: 48.54
+
+Epoch: 93
+Train loss:1.51425 time: 6 s train acc: 49.994 test loss:1.55892 test acc: 48.72
+
+Epoch: 94
+Train loss:1.52093 time: 7 s train acc: 49.93 test loss:1.56187 test acc: 48.99
+
+Epoch: 95
+Train loss:1.52701 time: 7 s train acc: 49.77 test loss:1.56356 test acc: 48.9
+
+Epoch: 96
+Train loss:1.51987 time: 6 s train acc: 49.956 test loss:1.57776 test acc: 48.82
+
+Epoch: 97
+Train loss:1.51635 time: 6 s train acc: 50.072 test loss:1.58543 test acc: 49.0
+
+Epoch: 98
+Train loss:1.52342 time: 7 s train acc: 49.992 test loss:1.56472 test acc: 49.04
+
+Epoch: 99
+Train loss:1.52113 time: 6 s train acc: 50.126 test loss:1.55928 test acc: 49.27

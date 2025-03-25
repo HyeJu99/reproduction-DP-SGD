@@ -164,10 +164,10 @@ def train(epoch):
         np.random.shuffle(sample_idxes)
 
     # [DiSK] Initialize:
-    d_t_minus = 0
-    k = 0.7
-    y = -1
-    g_t_minuses = []
+    d_t_minuses = []  # [int] 업데이트방향(앞뒤 가중치 간 차이)
+    k = 0.7  # kappa
+    y = (1 - k) / k  # gamma NAG
+    g_t_minuses = []  # [Tensor]
 
     for batch_idx in range(steps):
         if args.dataset == "svhn":
@@ -198,28 +198,37 @@ def train(epoch):
                 # print("len(g_t_minus)", len(g_t_minus))  # 21
                 for idx, p in enumerate(net.parameters()):
                     if batch_idx == 0:
-                        g_t_minus = torch.zeros_like(p)
+                        g_t_minus = p  # torch.zeros_like(p)  # L2 TODO
+                        d_t_minus = 0  # L2
                     else:
                         g_t_minus = g_t_minuses[idx]
-                    # print("b_idx:{}, idx:{}, p.shape:{}".format(batch_idx, idx, p.shape))
+                        d_t_minus = d_t_minuses[idx]
+                    # compute
                     g_t = torch.normal(  # TODO: 알고리즘3으로 변경 필요
                         0,
                         noise_multiplier * args.clip / args.batchsize,
                         size=p.grad.shape,
                         device=p.grad.device,
                     )
-                    g_t_hat = (1 - k) * g_t_minus + k * g_t
-                    # if idx == 20:
-                    # print("===============")
-                    # print("idx:{} g_t_minus:{}".format(idx, g_t_minus))
                     x_t = p.grad.data
-                    p.grad.data += g_t_hat
-                    d_t = p.grad.data - x_t
+                    combined_x_t = ((1 - k) / (k * y)) * (x_t + y * d_t_minus) + (
+                        1 - ((1 - k) / (k * y))
+                    ) * x_t
 
+                    # Apply filter
+                    g_t_hat = (1 - k) * g_t_minus + k * g_t
+
+                    # Parameter update
+                    p.grad.data = combined_x_t + g_t_hat
+
+                    # Record update direction
+                    d_t = p.grad.data - combined_x_t  # TODO Q: 그럼 g_t_hat인거 아닌?
                     if batch_idx == 0:
                         g_t_minuses.append(g_t_hat)
+                        d_t_minuses.append(d_t)
                     else:
                         g_t_minuses[idx] = g_t_hat
+                        d_t_minuses[idx] = d_t
         else:
             optimizer.zero_grad()
             outputs = net(inputs)
