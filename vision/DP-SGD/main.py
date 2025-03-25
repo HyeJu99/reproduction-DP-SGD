@@ -211,18 +211,19 @@ def train(epoch):
                         device=p.grad.device,
                     )
                     x_t = p.grad.data
-                    combined_x_t = ((1 - k) / (k * y)) * (x_t + y * d_t_minus) + (
-                        1 - ((1 - k) / (k * y))
-                    ) * x_t
+                    # combined_x_t = ((1 - k) / (k * y)) * (x_t + y * d_t_minus) + (
+                    # 1 - ((1 - k) / (k * y))
+                    # ) * x_t
 
                     # Apply filter
                     g_t_hat = (1 - k) * g_t_minus + k * g_t
 
                     # Parameter update
-                    p.grad.data = combined_x_t + g_t_hat
+                    # p.grad.data = combined_x_t + g_t_hat
+                    p.grad.data += g_t_hat
 
                     # Record update direction
-                    d_t = p.grad.data - combined_x_t  # TODO Q: 그럼 g_t_hat인거 아닌?
+                    d_t = p.grad.data  # -combined_x_t # TODO Q: 그럼 g_t_hat인거 아닌?
                     if batch_idx == 0:
                         g_t_minuses.append(g_t_hat)
                         d_t_minuses.append(d_t)
